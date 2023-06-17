@@ -1,95 +1,37 @@
-# Obsidian Sample Plugin
+# Obsidian Template Tools Plugin
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+This is an [Obsidian](https://obsidian.md) that compliments and extends the built-in template
+functionality.
 
-This project uses Typescript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
+## Overview
 
-**Note:** The Obsidian API is still in early alpha and is subject to change at any time!
+Please note that at present this plugin is in **VERY EARLY DEVELOPMENT.** As such, it might do
+wonderful things like grow flowers in your garden or terrible things like eat all your Obsidian
+notes and blow up your computer. As it matures I expect it to become more stable and less
+dangerous. By 1.0 it should be safe and stable. For now, use at your own risk.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+In all cases this plugin will use the existing note id if one has already been added to the file,
+or it will generate one as needed.
 
-## First time developing plugins?
+The intended 1.0 functionality for this plugin is as follows:
 
-Quick starting guide for new plugin devs:
+- [ ] Provide a command to add the note id into the front-matter.
+- [ ] Provide a command to replace the note id in the front-matter (generate a new id).
+- [ ] Provide a command to insert the note id into the text at the current cursor position (this
+      may also add to the front-matter if no current note id has been created).
+- [ ] Provide a command to copy the current note id to the clipboard.
+- [ ] Support templates with a configurable {{note_id}} variable.
+- [ ] Allow navigating directly to your note with a URL, obsidian://open_note?vault=<your-vault>&note_id=<your-note-id>
+- [ ] Support a configurable template variable for {{yesterday}}.
+- [ ] Support a configurable template variable for {{tomorrow}}.
+- [ ] Support the ability to auto-update a front-matter value upon note modification (record last
+      modified date).
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+Future possibilities:
 
-## Releasing new releases
+- [ ] Custom format for the ID generation
+- [ ] Support direct linking to note id with wikilink [[<note-id>]]. Not even sure if this is even possible in Obsidian.
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+## License
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
-
-## Adding your plugin to the community plugin list
-
-- Check https://github.com/obsidianmd/obsidian-releases/blob/master/plugin-review.md
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
-
-## How to use
-
-- Clone this repo.
-- `npm i` or `yarn` to install dependencies
-- `npm run dev` to start compilation in watch mode.
-
-## Manually installing the plugin
-
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
-```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
-
-## API Documentation
-
-See https://github.com/obsidianmd/obsidian-api
+[MIT](license.md) © 2023 [Brennan Fee](https://github.com/brennanfee)
